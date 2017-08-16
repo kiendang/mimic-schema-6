@@ -1,0 +1,6131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>mimic Database</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.5 -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.1.2/css/buttons.bootstrap.min.css">
+  <!-- Code Mirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/codemirror.min.css">
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+  
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <!-- Salvattore -->
+  <link rel="stylesheet" href="plugins/salvattore/salvattore.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="dist/css/skins/all-skins.min.css">
+  <!-- SchemaSpy -->
+  <link rel="stylesheet" href="schemaSpy.css">
+  
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+<body class="hold-transition skin-blue layout-top-nav">
+<div class="wrapper">
+  <header class="main-header">
+    <nav class="navbar navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><b>mimic</b> Database</a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <i class="fa fa-bars"></i>
+          </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Tables <span class="sr-only">(current)</span></a></li>            
+			<!--<li><a href="components.html" title="List of system components">Components</a></li>-->
+			<li><a href="columns.html" title="All of the columns in the schema">Columns</a></li>
+			<li><a href="constraints.html" title="Useful for diagnosing error messages that just give constraint name or number">Constraints</a></li>
+			<li><a href="relationships.html" title="Diagram of table relationships">Relationships</a></li>
+			<li><a href="orphans.html" title="View of tables with neither parents nor children">Orphan&nbsp;Tables</a></li>				
+			<li><a href="anomalies.html" title="Things that might not be quite right">Anomalies</a></li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+        <!-- Navbar Right Menu -->
+
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+  </header>
+  <!-- Main content -->
+  <!-- Full Width Column -->
+  <div class="content-wrapper">
+          <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>Columns</h1>
+      </section>
+      <!-- Main content -->
+      <section class="content">
+		<div class="box box-primary">
+			<div class="box-header with-border">
+              <i class="fa fa-table"></i>
+              <h3 class="box-title">Columns</h3>
+            </div>	
+            <div class="box-body">
+				<table id="column_table" class="table table-bordered table-striped dataTable" role="grid">
+				<thead align='left'>
+				<tr>
+				  <th>Table</th>
+				  <th>Type</th>
+				  <th>Column</th>				  
+				  <th>Type</th>
+				  <th>Size</th>
+				  <th title='Are nulls allowed?'>Nulls</th>
+				  <th title='Is column automatically updated?'>Auto</th>
+				  <th title='Default value'>Default</th>
+				  <th title='Comments' class="toggle"><span>Comments</span></th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td>enddate</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Date when the prescription ended.</p></td>
+				</tr>
+				<tr>
+				 <td>d_items</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Primary key. Identifies the charted item.</p></td>
+				</tr>
+				<tr>
+				 <td>microbiologyevents</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>labevents</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time when the event occured.</p></td>
+				</tr>
+				<tr>
+				 <td>drgcodes</td>
+				 <td>Table</td>
+				 <td>drg_type</td>
+				 <td>varchar</td>
+				 <td>20</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Type of Diagnosis-Related Group, for example APR is All Patient Refined</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the ICU stay.</p></td>
+				</tr>
+				<tr>
+				 <td>microbiologyevents</td>
+				 <td>Table</td>
+				 <td>dilution_comparison</td>
+				 <td>varchar</td>
+				 <td>20</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>The comparison component of DILUTION_TEXT: either &lt;= (less than or equal), = (equal), or &gt;= (greater than or equal), or null when not available.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_2</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_2</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_11</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_1</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>transfers</td>
+				 <td>Table</td>
+				 <td>intime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time when the patient was transferred into the unit.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td>rate</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Rate at which the item is being administered to the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>d_cpt</td>
+				 <td>Table</td>
+				 <td>category</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Code category.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_7</td>
+				 <td>Table</td>
+				 <td>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents</td>
+				 <td>Table</td>
+				 <td>error</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Flag to highlight an error with the event.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td>amountuom</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unit of measurement for the amount.</p></td>
+				</tr>
+				<tr>
+				 <td>transfers</td>
+				 <td>Table</td>
+				 <td>dbsource</td>
+				 <td>varchar</td>
+				 <td>20</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Source database of the item.</p></td>
+				</tr>
+				<tr>
+				 <td>datetimeevents</td>
+				 <td>Table</td>
+				 <td>error</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Flag to highlight an error with the event.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_3</td>
+				 <td>Table</td>
+				 <td>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time of that the input was started or received.</p></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>secondaryordercategoryname</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_1</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>cptevents</td>
+				 <td>Table</td>
+				 <td>ticket_id_seq</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Sequence number of the event, derived from the ticket ID.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_11</td>
+				 <td>Table</td>
+				 <td>warning</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_10</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_2</td>
+				 <td>Table</td>
+				 <td>stopped</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_2</td>
+				 <td>Table</td>
+				 <td>warning</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>labevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the hospital stay.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_4</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_11</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_7</td>
+				 <td>Table</td>
+				 <td>resultstatus</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>ccs_multi_level_dx</td>
+				 <td>Table</td>
+				 <td>ccs_name</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_10</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>ordercategoryname</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td>drug_name_poe</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Name of the drug on the Provider Order Entry interface.</p></td>
+				</tr>
+				<tr>
+				 <td>d_items</td>
+				 <td>Table</td>
+				 <td>conceptid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Identifier used to harmonize concepts identified by multiple ITEMIDs. CONCEPTIDs are planned but not yet implemented (all values are NULL).</p></td>
+				</tr>
+				<tr>
+				 <td>d_cpt</td>
+				 <td>Table</td>
+				 <td>sectionheader</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Section header.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_12</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>transfers</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the hospital stay.</p></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>callout_status</td>
+				 <td>varchar</td>
+				 <td>20</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Current status of the call out request.</p></td>
+				</tr>
+				<tr>
+				 <td>icustays</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the hospital stay.</p></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>comments_canceledby</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>microbiologyevents</td>
+				 <td>Table</td>
+				 <td>isolate_num</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Isolate number associated with the test.</p></td>
+				</tr>
+				<tr>
+				 <td>d_items</td>
+				 <td>Table</td>
+				 <td>abbreviation</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Abbreviation associated with the item.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>rateuom</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unit of measurement for the rate.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_8</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>submit_wardid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Identifies the ward where the call out request was submitted.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_4</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_11</td>
+				 <td>Table</td>
+				 <td>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_11</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_8</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_2</td>
+				 <td>Table</td>
+				 <td>valuenum</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td>originalamount</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Amount of the item which was originally charted.</p></td>
+				</tr>
+				<tr>
+				 <td>services</td>
+				 <td>Table</td>
+				 <td>prev_service</td>
+				 <td>varchar</td>
+				 <td>20</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Previous service type.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_6</td>
+				 <td>Table</td>
+				 <td>warning</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>microbiologyevents</td>
+				 <td>Table</td>
+				 <td>org_name</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Name of the organism.</p></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>callout_service</td>
+				 <td>varchar</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Identifies the service that the patient is called out to.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_7</td>
+				 <td>Table</td>
+				 <td>valuenum</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td>ethnicity</td>
+				 <td>varchar</td>
+				 <td>200</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Ethnicity.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unit of measurement.</p></td>
+				</tr>
+				<tr>
+				 <td>labevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the charted item.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_7</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td>dose_val_rx</td>
+				 <td>varchar</td>
+				 <td>120</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Dose of the drug prescribed.</p></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td>edouttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_2</td>
+				 <td>Table</td>
+				 <td>resultstatus</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>drgcodes</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>drg_code</td>
+				 <td>varchar</td>
+				 <td>20</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Diagnosis-Related Group code</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td>marital_status</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Marital status.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_10</td>
+				 <td>Table</td>
+				 <td>valuenum</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_14</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>patients</td>
+				 <td>Table</td>
+				 <td>expire_flag</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Flag indicating that the patient has died.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_1</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the charted item.</p></td>
+				</tr>
+				<tr>
+				 <td>d_icd_procedures</td>
+				 <td>Table</td>
+				 <td>short_title</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Short title associated with the code.</p></td>
+				</tr>
+				<tr>
+				 <td>noteevents</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Date and time when the note was charted. Note that some notes (e.g. discharge summaries) do not have a time associated with them: these notes have NULL in this column.</p></td>
+				</tr>
+				<tr>
+				 <td>services</td>
+				 <td>Table</td>
+				 <td>curr_service</td>
+				 <td>varchar</td>
+				 <td>20</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Current service type.</p></td>
+				</tr>
+				<tr>
+				 <td>outputevents</td>
+				 <td>Table</td>
+				 <td>iserror</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>microbiologyevents</td>
+				 <td>Table</td>
+				 <td>ab_name</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Name of the antibody used.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>secondaryordercategoryname</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>A secondary group for those items with more than one grouping possible.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_14</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_13</td>
+				 <td>Table</td>
+				 <td>resultstatus</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_11</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the hospital stay.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_13</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>comments_canceledby</td>
+				 <td>varchar</td>
+				 <td>40</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>The title of the caregiver who canceled the order.</p></td>
+				</tr>
+				<tr>
+				 <td>outputevents</td>
+				 <td>Table</td>
+				 <td>newbottle</td>
+				 <td>bpchar</td>
+				 <td>1</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_8</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_5</td>
+				 <td>Table</td>
+				 <td>stopped</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td>admission_type</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Type of admission, for example emergency or elective.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_1</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_icd_diagnoses</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>d_icd_procedures</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_9</td>
+				 <td>Table</td>
+				 <td>warning</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_cpt</td>
+				 <td>Table</td>
+				 <td>subsectionheader</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Subsection header.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_9</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the caregiver.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_5</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>currentreservationtime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Latest time at which a ward was reserved for the call out request.</p></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>endtime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_5</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_2</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>rate</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Rate at which the item is being administered to the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>patients</td>
+				 <td>Table</td>
+				 <td>dod_ssn</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Date of death recorded in the social security records.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_11</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_1</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_7</td>
+				 <td>Table</td>
+				 <td>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_items</td>
+				 <td>Table</td>
+				 <td>linksto</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Table which contains data for the given ITEMID.</p></td>
+				</tr>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>drug_type</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Type of drug.</p></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>isopenbag</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_2</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_items</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>createtime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time at which the call out request was created.</p></td>
+				</tr>
+				<tr>
+				 <td>outputevents</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_3</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_8</td>
+				 <td>Table</td>
+				 <td>valuenum</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>request_resp</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Indicates if special precautions are required.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_5</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_14</td>
+				 <td>Table</td>
+				 <td>resultstatus</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_14</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>drgcodes</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the hospital stay.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time when the event was recorded in the system.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_9</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_5</td>
+				 <td>Table</td>
+				 <td>error</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>transfers</td>
+				 <td>Table</td>
+				 <td>prev_careunit</td>
+				 <td>varchar</td>
+				 <td>20</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Previous careunit.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_2</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td>religion</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Religon.</p></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td>language</td>
+				 <td>varchar</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Language.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_14</td>
+				 <td>Table</td>
+				 <td>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_7</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>outputevents</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td>has_chartevents_data</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Hospital admission has at least one observation in the CHARTEVENTS table.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_9</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_4</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>continueinnextdept</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_items</td>
+				 <td>Table</td>
+				 <td>param_type</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Type of item, for example solution or ingredient.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_7</td>
+				 <td>Table</td>
+				 <td>error</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_9</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>procedures_icd</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icd9_code</td>
+				 <td>varchar</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>ICD9 code associated with the procedure.</p></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>firstreservationtime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>First time at which a ward was reserved for the call out request.</p></td>
+				</tr>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>amountuom</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unit of measurement for the amount.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_1</td>
+				 <td>Table</td>
+				 <td>stopped</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_14</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_13</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>drgcodes</td>
+				 <td>Table</td>
+				 <td>drg_mortality</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Relative mortality, available for type APR only.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_10</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_8</td>
+				 <td>Table</td>
+				 <td>error</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>outputevents</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_labitems</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>d_labitems</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>label</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Label identifying the item.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_9</td>
+				 <td>Table</td>
+				 <td>resultstatus</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_1</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>outputevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>drgcodes</td>
+				 <td>Table</td>
+				 <td>drg_severity</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Relative severity, available for type APR only.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_11</td>
+				 <td>Table</td>
+				 <td>error</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td>originalsite</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Anatomical site for the original administration of the item.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_7</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>microbiologyevents</td>
+				 <td>Table</td>
+				 <td>dilution_text</td>
+				 <td>varchar</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>The dilution amount tested for and the comparison which was made against it (e.g. &lt;=4).</p></td>
+				</tr>
+				<tr>
+				 <td>d_labitems</td>
+				 <td>Table</td>
+				 <td>category</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Category of item, for example chemistry or hematology.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td>originalroute</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Route of administration originally chosen for the item.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_13</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the charted item.</p></td>
+				</tr>
+				<tr>
+				 <td>patients</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Primary key. Identifies the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>icustays</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>originalamount</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Amount of the item which was originally charted.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_9</td>
+				 <td>Table</td>
+				 <td>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_12</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>icustays</td>
+				 <td>Table</td>
+				 <td>outtime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time of discharge from the ICU.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_11</td>
+				 <td>Table</td>
+				 <td>resultstatus</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_icd_diagnoses</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>long_title</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Long title associated with the code.</p></td>
+				</tr>
+				<tr>
+				 <td>drgcodes</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>ccs_single_level_dx</td>
+				 <td>Table</td>
+				 <td>ccs_name</td>
+				 <td>varchar</td>
+				 <td>150</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>cancelreason</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Reason for cancellation, if cancelled.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>totalamount</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>The total amount in the solution for the given item.</p></td>
+				</tr>
+				<tr>
+				 <td>services</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the hospital stay.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_11</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>curr_careunit</td>
+				 <td>varchar</td>
+				 <td>15</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>If the ward where the patient is currently residing is an ICU, the ICU type is listed here.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_4</td>
+				 <td>Table</td>
+				 <td>error</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_8</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>outputevents</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>icustays</td>
+				 <td>Table</td>
+				 <td>dbsource</td>
+				 <td>varchar</td>
+				 <td>20</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Source database of the item.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_11</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_3</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td>gsn</td>
+				 <td>varchar</td>
+				 <td>200</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Generic Sequence Number.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>orderid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Identifier linking items which are grouped in a solution.</p></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>callout_wardid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Identifies the ward where the patient is to be discharged to. A value of 1 indicates the first available ward. A value of 0 indicates home.</p></td>
+				</tr>
+				<tr>
+				 <td>microbiologyevents</td>
+				 <td>Table</td>
+				 <td>dilution_value</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>The value component of DILUTION_TEXT: must be a floating point number.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents</td>
+				 <td>Table</td>
+				 <td>resultstatus</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Result status of lab data.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_8</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_13</td>
+				 <td>Table</td>
+				 <td>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td>rateuom</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unit of measurement for the rate.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_10</td>
+				 <td>Table</td>
+				 <td>error</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>icustays</td>
+				 <td>Table</td>
+				 <td>first_careunit</td>
+				 <td>varchar</td>
+				 <td>20</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>First careunit associated with the ICU stay.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_9</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_6</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_6</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_9</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_4</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_12</td>
+				 <td>Table</td>
+				 <td>resultstatus</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>microbiologyevents</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time when the event occured, if available.</p></td>
+				</tr>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>drug</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Name of the drug.</p></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td>hospital_expire_flag</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>microbiologyevents</td>
+				 <td>Table</td>
+				 <td>spec_itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the specimen.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>comments_date</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time at which the caregiver edited or cancelled the order.</p></td>
+				</tr>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the hospital stay.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_13</td>
+				 <td>Table</td>
+				 <td>stopped</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_12</td>
+				 <td>Table</td>
+				 <td>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td>ndc</td>
+				 <td>varchar</td>
+				 <td>120</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>National Drug Code.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_14</td>
+				 <td>Table</td>
+				 <td>valuenum</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the caregiver.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_2</td>
+				 <td>Table</td>
+				 <td>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_cpt</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_14</td>
+				 <td>Table</td>
+				 <td>stopped</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_6</td>
+				 <td>Table</td>
+				 <td>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_1</td>
+				 <td>Table</td>
+				 <td>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td>startdate</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Date when the prescription started.</p></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>acknowledge_status</td>
+				 <td>varchar</td>
+				 <td>20</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>The status of the response to the call out request.</p></td>
+				</tr>
+				<tr>
+				 <td>icustays</td>
+				 <td>Table</td>
+				 <td>intime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time of admission to the ICU.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_10</td>
+				 <td>Table</td>
+				 <td>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>transfers</td>
+				 <td>Table</td>
+				 <td>los</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Length of stay in the unit in minutes.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td>newbottle</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Indicates when a new bottle of the solution was hung at the bedside.</p></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td>discharge_location</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Discharge location</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_3</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>diagnoses_icd</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>outputevents</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>drgcodes</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>description</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Description of the Diagnosis-Related Group</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td>amount</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Amount of the item administered to the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_3</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>icustays</td>
+				 <td>Table</td>
+				 <td>los</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Length of stay in the ICU in minutes.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time when the event occured.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td>originalamountuom</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unit of measurement for the original amount.</p></td>
+				</tr>
+				<tr>
+				 <td>noteevents</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>starttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_10</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_6</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>request_vre</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Indicates if special precautions are required.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_2</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>ccs_multi_level_dx</td>
+				 <td>Table</td>
+				 <td>ccs_group1</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>outputevents</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>procedures_icd</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>caregivers</td>
+				 <td>Table</td>
+				 <td>label</td>
+				 <td>varchar</td>
+				 <td>15</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Title of the caregiver, for example MD or RN.</p></td>
+				</tr>
+				<tr>
+				 <td>datetimeevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>ordercategorydescription</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>datetimeevents</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unit of measurement.</p></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>updatetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Last time at which the call out request was updated.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_7</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>discharge_wardid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>The ward to which the patient was discharged.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_1</td>
+				 <td>Table</td>
+				 <td>error</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_10</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_8</td>
+				 <td>Table</td>
+				 <td>resultstatus</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_4</td>
+				 <td>Table</td>
+				 <td>stopped</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>caregivers</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>procedures_icd</td>
+				 <td>Table</td>
+				 <td>seq_num</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Lower procedure numbers occurred earlier.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_5</td>
+				 <td>Table</td>
+				 <td>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_9</td>
+				 <td>Table</td>
+				 <td>valuenum</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_3</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>datetimeevents</td>
+				 <td>Table</td>
+				 <td>resultstatus</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Result status of lab data.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_1</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_5</td>
+				 <td>Table</td>
+				 <td>resultstatus</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_13</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>transfers</td>
+				 <td>Table</td>
+				 <td>prev_wardid</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Identifier for the previous ward the patient was located in.</p></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td>deathtime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time of death.</p></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>comments_editedby</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_cpt</td>
+				 <td>Table</td>
+				 <td>mincodeinsubsection</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Minimum code within the subsection.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_6</td>
+				 <td>Table</td>
+				 <td>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>drgcodes</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_13</td>
+				 <td>Table</td>
+				 <td>error</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>patients</td>
+				 <td>Table</td>
+				 <td>dod_hosp</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Date of death recorded in the hospital records.</p></td>
+				</tr>
+				<tr>
+				 <td>cptevents</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_6</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_2</td>
+				 <td>Table</td>
+				 <td>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_9</td>
+				 <td>Table</td>
+				 <td>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>request_tele</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Indicates if special precautions are required.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time when the event was recorded in the system.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_1</td>
+				 <td>Table</td>
+				 <td>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_5</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>statusdescription</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>labevents</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>varchar</td>
+				 <td>200</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Value of the event as a text string.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_1</td>
+				 <td>Table</td>
+				 <td>valuenum</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_13</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_14</td>
+				 <td>Table</td>
+				 <td>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_9</td>
+				 <td>Table</td>
+				 <td>stopped</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_12</td>
+				 <td>Table</td>
+				 <td>warning</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_4</td>
+				 <td>Table</td>
+				 <td>valuenum</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the ICU stay.</p></td>
+				</tr>
+				<tr>
+				 <td>d_icd_diagnoses</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icd9_code</td>
+				 <td>varchar</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>ICD9 code - note that this is a fixed length character field, as whitespaces are important in uniquely identifying ICD-9 codes.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>ordercategoryname</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>A group which the item corresponds to.</p></td>
+				</tr>
+				<tr>
+				 <td>diagnoses_icd</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the hospital stay.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_3</td>
+				 <td>Table</td>
+				 <td>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_12</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>datetimeevents</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_12</td>
+				 <td>Table</td>
+				 <td>error</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>icustays</td>
+				 <td>Table</td>
+				 <td>first_wardid</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Identifier for the first ward the patient was located in.</p></td>
+				</tr>
+				<tr>
+				 <td>patients</td>
+				 <td>Table</td>
+				 <td>dob</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Date of birth.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_12</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_icd_procedures</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icd9_code</td>
+				 <td>varchar</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>ICD9 code - note that this is a fixed length character field, as whitespaces are important in uniquely identifying ICD-9 codes.</p></td>
+				</tr>
+				<tr>
+				 <td>noteevents</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>category</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Category of the note, e.g. Discharge summary.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_3</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_8</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_1</td>
+				 <td>Table</td>
+				 <td>resultstatus</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_7</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>datetimeevents</td>
+				 <td>Table</td>
+				 <td>warning</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Flag to highlight that the value has triggered a warning.</p></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>linkorderid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>patients</td>
+				 <td>Table</td>
+				 <td>gender</td>
+				 <td>varchar</td>
+				 <td>5</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Gender.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_7</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_9</td>
+				 <td>Table</td>
+				 <td>error</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_12</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td>edregtime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>noteevents</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_13</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>request_cdiff</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Indicates if special precautions are required.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_3</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_12</td>
+				 <td>Table</td>
+				 <td>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_3</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>linkorderid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Identifier linking orders across multiple administrations. LINKORDERID is always equal to the first occuring ORDERID of the series.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_4</td>
+				 <td>Table</td>
+				 <td>warning</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>transfers</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the ICU stay.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td>originalrateuom</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unit of measurement for the rate originally chosen.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents</td>
+				 <td>Table</td>
+				 <td>warning</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Flag to highlight that the value has triggered a warning.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_2</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>outputevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>icustays</td>
+				 <td>Table</td>
+				 <td>last_careunit</td>
+				 <td>varchar</td>
+				 <td>20</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Last careunit associated with the ICU stay.</p></td>
+				</tr>
+				<tr>
+				 <td>microbiologyevents</td>
+				 <td>Table</td>
+				 <td>chartdate</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Date when the event occured.</p></td>
+				</tr>
+				<tr>
+				 <td>cptevents</td>
+				 <td>Table</td>
+				 <td>cpt_suffix</td>
+				 <td>varchar</td>
+				 <td>5</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Text element of the Current Procedural Terminology, if any. Indicates code category.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_14</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_7</td>
+				 <td>Table</td>
+				 <td>warning</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>procedures_icd</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>patients</td>
+				 <td>Table</td>
+				 <td>dod</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Date of death. Null if the patient was alive at least 90 days post hospital discharge.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents</td>
+				 <td>Table</td>
+				 <td>valuenum</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Value of the event as a number.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_6</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_10</td>
+				 <td>Table</td>
+				 <td>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_5</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>transfers</td>
+				 <td>Table</td>
+				 <td>curr_careunit</td>
+				 <td>varchar</td>
+				 <td>20</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Current careunit.</p></td>
+				</tr>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td>form_unit_disp</td>
+				 <td>varchar</td>
+				 <td>120</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unit of measurement associated with the formulation.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_3</td>
+				 <td>Table</td>
+				 <td>valuenum</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Primary key. Identifies the hospital stay.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_10</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>datetimeevents</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Value of the event as a text string.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_14</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>noteevents</td>
+				 <td>Table</td>
+				 <td>description</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>A more detailed categorization for the note, sometimes entered by free-text.</p></td>
+				</tr>
+				<tr>
+				 <td>ccs_multi_level_dx</td>
+				 <td>Table</td>
+				 <td>ccs_group2</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>diagnoses_icd</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>labevents</td>
+				 <td>Table</td>
+				 <td>flag</td>
+				 <td>varchar</td>
+				 <td>20</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Flag indicating whether the lab test value is considered abnormal (null if the test was normal).</p></td>
+				</tr>
+				<tr>
+				 <td>labevents</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>ccs_single_level_dx</td>
+				 <td>Table</td>
+				 <td>ccs_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_13</td>
+				 <td>Table</td>
+				 <td>warning</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>cptevents</td>
+				 <td>Table</td>
+				 <td>description</td>
+				 <td>varchar</td>
+				 <td>200</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Description of the Current Procedural Terminology, if available.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_8</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_8</td>
+				 <td>Table</td>
+				 <td>stopped</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_13</td>
+				 <td>Table</td>
+				 <td>valuenum</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_labitems</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the charted item.</p></td>
+				</tr>
+				<tr>
+				 <td>outputevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>caregivers</td>
+				 <td>Table</td>
+				 <td>description</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>More detailed description of the caregiver, if available.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the hospital stay.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_8</td>
+				 <td>Table</td>
+				 <td>warning</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_3</td>
+				 <td>Table</td>
+				 <td>stopped</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>noteevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_14</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>transfers</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_10</td>
+				 <td>Table</td>
+				 <td>warning</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>labevents</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>20</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unit of measurement.</p></td>
+				</tr>
+				<tr>
+				 <td>d_items</td>
+				 <td>Table</td>
+				 <td>category</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Category of data which the concept falls under.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>starttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time when the event started.</p></td>
+				</tr>
+				<tr>
+				 <td>services</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td>drug_name_generic</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Generic drug name.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_3</td>
+				 <td>Table</td>
+				 <td>resultstatus</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>comments_editedby</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>The title of the caregiver who edited the order.</p></td>
+				</tr>
+				<tr>
+				 <td>datetimeevents</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time when the event occured.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td>orderid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Identifier linking items which are grouped in a solution.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_4</td>
+				 <td>Table</td>
+				 <td>resultstatus</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>noteevents</td>
+				 <td>Table</td>
+				 <td>iserror</td>
+				 <td>bpchar</td>
+				 <td>1</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Flag to highlight an error with the note.</p></td>
+				</tr>
+				<tr>
+				 <td>ccs_multi_level_dx</td>
+				 <td>Table</td>
+				 <td>ccs_group3</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_10</td>
+				 <td>Table</td>
+				 <td>stopped</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_8</td>
+				 <td>Table</td>
+				 <td>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>diagnoses_icd</td>
+				 <td>Table</td>
+				 <td>seq_num</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Priority of the code. Sequence 1 is the primary code.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_12</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>datetimeevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the ICU stay.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time when the event was recorded in the system.</p></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td>admission_location</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Admission location.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>ordercomponenttypedescription</td>
+				 <td>varchar</td>
+				 <td>200</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>The role of the item administered in the order.</p></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>request_mrsa</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Indicates if special precautions are required.</p></td>
+				</tr>
+				<tr>
+				 <td>cptevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>labevents</td>
+				 <td>Table</td>
+				 <td>valuenum</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Value of the event as a number.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_12</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>totalamountuom</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unit of measurement for the total amount in the solution.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_6</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_7</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_13</td>
+				 <td>Table</td>
+				 <td>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the ICU stay.</p></td>
+				</tr>
+				<tr>
+				 <td>transfers</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>d_icd_procedures</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>long_title</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Long title associated with the code.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the caregiver.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_6</td>
+				 <td>Table</td>
+				 <td>valuenum</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_items</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>label</td>
+				 <td>varchar</td>
+				 <td>200</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Label identifying the item.</p></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>outcometime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time at which the outcome (cancelled or discharged) occurred.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_4</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_1</td>
+				 <td>Table</td>
+				 <td>warning</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td>formulary_drug_cd</td>
+				 <td>varchar</td>
+				 <td>120</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Formulary drug code.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_6</td>
+				 <td>Table</td>
+				 <td>resultstatus</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_6</td>
+				 <td>Table</td>
+				 <td>error</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_cpt</td>
+				 <td>Table</td>
+				 <td>codesuffix</td>
+				 <td>varchar</td>
+				 <td>5</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Text element of the Current Procedural Terminology, if any.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_14</td>
+				 <td>Table</td>
+				 <td>error</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>amount</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Amount of the item administered to the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>noteevents</td>
+				 <td>Table</td>
+				 <td>text</td>
+				 <td>text</td>
+				 <td>2147483647</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Content of the note.</p></td>
+				</tr>
+				<tr>
+				 <td>caregivers</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique caregiver identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>diagnoses_icd</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icd9_code</td>
+				 <td>varchar</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>ICD9 code for the diagnosis.</p></td>
+				</tr>
+				<tr>
+				 <td>outputevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td>dose_unit_rx</td>
+				 <td>varchar</td>
+				 <td>120</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unit of measurement associated with the dose.</p></td>
+				</tr>
+				<tr>
+				 <td>microbiologyevents</td>
+				 <td>Table</td>
+				 <td>org_itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the organism.</p></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>cancelreason</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_9</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_4</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_11</td>
+				 <td>Table</td>
+				 <td>valuenum</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_13</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>submit_careunit</td>
+				 <td>varchar</td>
+				 <td>15</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>If the ward where the call was submitted was an ICU, the ICU type is listed here.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_4</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents</td>
+				 <td>Table</td>
+				 <td>stopped</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Text string indicating the stopped status of an event (i.e. stopped, not stopped).</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>patientweight</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>For drugs dosed by weight, the value of the weight used in the calculation.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>ordercategorydescription</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>The type of item administered.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_12</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_1</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_14</td>
+				 <td>Table</td>
+				 <td>warning</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_7</td>
+				 <td>Table</td>
+				 <td>stopped</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_cpt</td>
+				 <td>Table</td>
+				 <td>maxcodeinsubsection</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Maximum code within the subsection.</p></td>
+				</tr>
+				<tr>
+				 <td>noteevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the hospital stay.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_8</td>
+				 <td>Table</td>
+				 <td>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>datetimeevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the hospital stay.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_5</td>
+				 <td>Table</td>
+				 <td>warning</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>icustays</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Primary key. Identifies the ICU stay.</p></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td>diagnosis</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Diagnosis.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_7</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_8</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>noteevents</td>
+				 <td>Table</td>
+				 <td>chartdate</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Date when the note was charted.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_6</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>services</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_12</td>
+				 <td>Table</td>
+				 <td>stopped</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>transfers</td>
+				 <td>Table</td>
+				 <td>outtime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time when the patient was transferred out of the unit.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_4</td>
+				 <td>Table</td>
+				 <td>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_items</td>
+				 <td>Table</td>
+				 <td>unitname</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unit associated with the item.</p></td>
+				</tr>
+				<tr>
+				 <td>datetimeevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the caregiver.</p></td>
+				</tr>
+				<tr>
+				 <td>transfers</td>
+				 <td>Table</td>
+				 <td>curr_wardid</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Identifier for the current ward the patient is located in.</p></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>icustays</td>
+				 <td>Table</td>
+				 <td>last_wardid</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Identifier for the last ward the patient is located in.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_11</td>
+				 <td>Table</td>
+				 <td>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>microbiologyevents</td>
+				 <td>Table</td>
+				 <td>spec_type_desc</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Description of the specimen.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_5</td>
+				 <td>Table</td>
+				 <td>valueuom</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td>dischtime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time of discharge from the hospital.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_5</td>
+				 <td>Table</td>
+				 <td>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_10</td>
+				 <td>Table</td>
+				 <td>resultstatus</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the hospital stay.</p></td>
+				</tr>
+				<tr>
+				 <td>cptevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the hospital stay.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>endtime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time when the event ended.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_13</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>comments_date</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_cpt</td>
+				 <td>Table</td>
+				 <td>sectionrange</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Range of codes within the high-level section.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>continueinnextdept</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Indicates whether the item will be continued in the next department where the patient is transferred to.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_5</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>microbiologyevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>callout_outcome</td>
+				 <td>varchar</td>
+				 <td>20</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>The result of the call out request; either a cancellation or a discharge.</p></td>
+				</tr>
+				<tr>
+				 <td>microbiologyevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the hospital stay.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td>linkorderid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Identifier linking orders across multiple administrations. LINKORDERID is always equal to the first occuring ORDERID of the series.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_9</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the charted item.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Value of the event as a text string.</p></td>
+				</tr>
+				<tr>
+				 <td>microbiologyevents</td>
+				 <td>Table</td>
+				 <td>ab_itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the antibody.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>statusdescription</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>The current status of the order: stopped, rewritten, running or cancelled.</p></td>
+				</tr>
+				<tr>
+				 <td>cptevents</td>
+				 <td>Table</td>
+				 <td>sectionheader</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>High-level section of the Current Procedural Terminology code.</p></td>
+				</tr>
+				<tr>
+				 <td>cptevents</td>
+				 <td>Table</td>
+				 <td>costcenter</td>
+				 <td>varchar</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Center recording the code, for example the ICU or the respiratory unit.</p></td>
+				</tr>
+				<tr>
+				 <td>ccs_single_level_dx</td>
+				 <td>Table</td>
+				 <td>icd9_code</td>
+				 <td>bpchar</td>
+				 <td>5</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>cptevents</td>
+				 <td>Table</td>
+				 <td>cpt_number</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Numerical element of the Current Procedural Terminology code.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>icustay_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the ICU stay.</p></td>
+				</tr>
+				<tr>
+				 <td>icustays</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>cptevents</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>cpt_cd</td>
+				 <td>varchar</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Current Procedural Terminology code.</p></td>
+				</tr>
+				<tr>
+				 <td>ccs_multi_level_dx</td>
+				 <td>Table</td>
+				 <td>ccs_mid</td>
+				 <td>varchar</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>ccs_multi_level_dx</td>
+				 <td>Table</td>
+				 <td>icd9_code</td>
+				 <td>bpchar</td>
+				 <td>5</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>procedures_icd</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the hospital stay.</p></td>
+				</tr>
+				<tr>
+				 <td>noteevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the caregiver.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_4</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_11</td>
+				 <td>Table</td>
+				 <td>stopped</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_cpt</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>subsectionrange</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Range of codes within the subsection.</p></td>
+				</tr>
+				<tr>
+				 <td>outputevents</td>
+				 <td>Table</td>
+				 <td>stopped</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td>prod_strength</td>
+				 <td>varchar</td>
+				 <td>120</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Strength of the drug (product).</p></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>acknowledgetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time at which the call out request was acknowledged.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_11</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>datetimeevents</td>
+				 <td>Table</td>
+				 <td>storetime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time when the event was recorded in the system.</p></td>
+				</tr>
+				<tr>
+				 <td>d_labitems</td>
+				 <td>Table</td>
+				 <td>fluid</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Fluid associated with the item, for example blood or urine.</p></td>
+				</tr>
+				<tr>
+				 <td>microbiologyevents</td>
+				 <td>Table</td>
+				 <td>interpretation</td>
+				 <td>varchar</td>
+				 <td>5</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Interpretation of the test.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td>originalrate</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Rate of administration originally chosen for the item.</p></td>
+				</tr>
+				<tr>
+				 <td>cptevents</td>
+				 <td>Table</td>
+				 <td>subsectionheader</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Subsection of the Current Procedural Terminology code.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_3</td>
+				 <td>Table</td>
+				 <td>error</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>transfers</td>
+				 <td>Table</td>
+				 <td>eventtype</td>
+				 <td>varchar</td>
+				 <td>20</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Type of event, for example admission or transfer.</p></td>
+				</tr>
+				<tr>
+				 <td>cptevents</td>
+				 <td>Table</td>
+				 <td>chartdate</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Date when the event occured, if available.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_6</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>locationcategory</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>datetimeevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the charted item.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>originalrate</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Rate of administration originally chosen for the item.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_12</td>
+				 <td>Table</td>
+				 <td>valuenum</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>labevents</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the patient.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td>stopped</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Event was explicitly marked as stopped. Infrequently used by caregivers.</p></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_4</td>
+				 <td>Table</td>
+				 <td>cgid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td>route</td>
+				 <td>varchar</td>
+				 <td>120</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Route of administration, for example intravenous or oral.</p></td>
+				</tr>
+				<tr>
+				 <td>prescriptions</td>
+				 <td>Table</td>
+				 <td>form_val_disp</td>
+				 <td>varchar</td>
+				 <td>120</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Amount of the formulation dispensed.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_5</td>
+				 <td>Table</td>
+				 <td>valuenum</td>
+				 <td>float8</td>
+				 <td>17</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>orderid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_3</td>
+				 <td>Table</td>
+				 <td>warning</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_cv</td>
+				 <td>Table</td>
+				 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Foreign key. Identifies the hospital stay.</p></td>
+				</tr>
+				<tr>
+				 <td>datetimeevents</td>
+				 <td>Table</td>
+				 <td>stopped</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Event was explicitly marked as stopped. Infrequently used by caregivers.</p></td>
+				</tr>
+				<tr>
+				 <td>callout</td>
+				 <td>Table</td>
+				 <td>curr_wardid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Identifies the ward where the patient is currently residing.</p></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td>insurance</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Insurance type.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_2</td>
+				 <td>Table</td>
+				 <td>error</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>services</td>
+				 <td>Table</td>
+				 <td>transfertime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time when the transfer occured.</p></td>
+				</tr>
+				<tr>
+				 <td>procedureevents_mv</td>
+				 <td>Table</td>
+				 <td>location</td>
+				 <td>varchar</td>
+				 <td>30</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_labitems</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>loinc_code</td>
+				 <td>varchar</td>
+				 <td>100</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Logical Observation Identifiers Names and Codes (LOINC) mapped to the item, if available.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_6</td>
+				 <td>Table</td>
+				 <td>stopped</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_icd_diagnoses</td>
+				 <td>Table</td>
+				 <td>short_title</td>
+				 <td>varchar</td>
+				 <td>50</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Short title associated with the code.</p></td>
+				</tr>
+				<tr>
+				 <td>admissions</td>
+				 <td>Table</td>
+				 <td>admittime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Time of admission to the hospital.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_10</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>subject_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>inputevents_mv</td>
+				 <td>Table</td>
+				 <td>isopenbag</td>
+				 <td>int2</td>
+				 <td>5</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Indicates whether the bag containing the solution is open.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_5</td>
+				 <td>Table</td>
+				 <td>charttime</td>
+				 <td>timestamp</td>
+				 <td>22</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>d_items</td>
+				 <td>Table</td>
+				 <td>dbsource</td>
+				 <td>varchar</td>
+				 <td>20</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Source database of the item.</p></td>
+				</tr>
+				<tr>
+				 <td>patients</td>
+				 <td>Table</td>
+				 <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>row_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title=''></td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td><p>Unique row identifier.</p></td>
+				</tr>
+				<tr>
+				 <td>chartevents_10</td>
+				 <td>Table</td>
+				 <td>value</td>
+				 <td>varchar</td>
+				 <td>255</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_2</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>hadm_id</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+				<tr>
+				 <td>chartevents_14</td>
+				 <td>Table</td>
+				 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>itemid</td>
+				 <td>int4</td>
+				 <td>10</td>
+				 <td title='nullable'>√</td>
+				 <td title=''></td>
+				 <td>null</td>
+				 <td></td>
+				</tr>
+								</tbody>
+				</table>				
+			</div>
+		</div>	
+      </section>    
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div>
+      <div class="pull-right hidden-xs">
+        <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
+        <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
+      </div>
+      <strong>Generate by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemeSpy 6.0.0-rc1</a></strong>
+    </div>
+    <!-- /.container -->
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 2.1.4 -->
+<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="plugins/jQueryUI/jquery-ui.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.1.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.colVis.min.js"></script>
+
+<!-- SlimScroll -->
+<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="plugins/fastclick/fastclick.js"></script>
+<!-- Salvattore -->
+<script src="plugins/salvattore/salvattore.min.js"></script>
+<!-- AnchorJS -->
+<script src="plugins/anchorjs/anchor.min.js"></script>
+<!-- CodeMirror -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/mode/sql/sql.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<script src="column.js"></script>
+<script src="schemaSpy.js"></script>
+</body>
+</html>
