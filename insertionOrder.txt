@@ -21,8 +21,6 @@ outputevents
 procedureevents_mv
 chartevents
 datetimeevents
-ccs_multi_level_dx
-ccs_single_level_dx
 chartevents_1
 chartevents_10
 chartevents_11

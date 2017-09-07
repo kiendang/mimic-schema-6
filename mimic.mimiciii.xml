@@ -117,19 +117,6 @@
             <column ascending="true" name="cgid"/>
          </index>
       </table>
-      <table name="ccs_multi_level_dx" numRows="13626" remarks="" schema="mimiciii" type="TABLE">
-         <column autoUpdated="false" digits="0" id="0" name="ccs_mid" nullable="false" remarks="" size="10" type="varchar"/>
-         <column autoUpdated="false" digits="0" id="1" name="ccs_name" nullable="false" remarks="" size="100" type="varchar"/>
-         <column autoUpdated="false" digits="0" id="2" name="ccs_group1" nullable="true" remarks="" size="100" type="varchar"/>
-         <column autoUpdated="false" digits="0" id="3" name="ccs_group2" nullable="true" remarks="" size="100" type="varchar"/>
-         <column autoUpdated="false" digits="0" id="4" name="ccs_group3" nullable="true" remarks="" size="100" type="varchar"/>
-         <column autoUpdated="false" digits="0" id="5" name="icd9_code" nullable="false" remarks="" size="5" type="bpchar"/>
-      </table>
-      <table name="ccs_single_level_dx" numRows="15079" remarks="" schema="mimiciii" type="TABLE">
-         <column autoUpdated="false" digits="0" id="0" name="ccs_id" nullable="false" remarks="" size="10" type="int4"/>
-         <column autoUpdated="false" digits="0" id="1" name="ccs_name" nullable="false" remarks="" size="150" type="varchar"/>
-         <column autoUpdated="false" digits="0" id="2" name="icd9_code" nullable="false" remarks="" size="5" type="bpchar"/>
-      </table>
       <table name="chartevents" numRows="330712483" remarks="Events occuring on a patient chart." schema="mimiciii" type="TABLE">
          <column autoUpdated="false" digits="0" id="0" name="row_id" nullable="false" remarks="Unique row identifier." size="10" type="int4"/>
          <column autoUpdated="false" digits="0" id="1" name="subject_id" nullable="false" remarks="Foreign key. Identifies the patient." size="10" type="int4">
